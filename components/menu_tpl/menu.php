@@ -4,7 +4,11 @@ use yii\helpers\Url;
 
 ?>
 
+<?php  if (isset($category['childs'])): ?>
 <li>
+<?php  else: ?>
+<li class="category-no-childs">
+<?php  endif; ?>
     <a href="<?= Url::to(['category/view', 'id' => $category['id']]) ?>">
         <?= $category['name']?>
         <?php  if (isset($category['childs'])): ?>

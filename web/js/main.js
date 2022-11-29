@@ -86,7 +86,11 @@ $('.add-to-cart').click(function(e) {
 $('.catalog').accordion({
 	animate: 150,
 	collapsible: true,
-	heightStyle: "content",
+	heightStyle: "content"
+})
+
+$('.category-no-childs').click(function () {
+	window.location.href = $(this).children('a').attr('href');
 })
 
 $('.ui-accordion-header').click(function() {

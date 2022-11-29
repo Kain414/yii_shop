@@ -76,7 +76,7 @@ use app\components\MenuWidget;
 				<div class="col-sm-3">
 					<div class="left-sidebar">
 						<h2>Category</h2>
-
+						
 						<ul class="catalog category-products">
 							<?= MenuWidget::widget([
 								'tpl' => 'menu',
@@ -536,90 +536,3 @@ use app\components\MenuWidget;
 			</div>
 		</div>
 	</section>
-
-	<?php
-
-$js = <<< JS
-let response = {
-    "_page": 1,
-    "_links": {
-        "self": {
-            "href": "https://example.amocrm.ru/api/v4/contacts?limit=2&page=1"
-        },
-        "next": {
-            "href": "https://example.amocrm.ru/api/v4/contacts?limit=2&page=2"
-        }
-    },
-    "_embedded": {
-        "contacts": [
-            {
-                "id": 7143599,
-                "name": "1",
-                "first_name": "",
-                "last_name": "",
-                "responsible_user_id": 504141,
-                "group_id": 0,
-                "created_by": 504141,
-                "updated_by": 504141,
-                "created_at": 1585758065,
-                "updated_at": 1585758065,
-                "closest_task_at": null,
-                "custom_fields_values": null,
-                "account_id": 28805383,
-                "_links": {
-                    "self": {
-                        "href": "https://example.amocrm.ru/api/v4/contacts/7143599"
-                    }
-                },
-                "_embedded": {
-                    "tags": [],
-                    "companies": [],
-					"leads": [123]
-                }
-            },
-            {
-                "id": 7767065,
-                "name": "dsgdsg",
-                "first_name": "",
-                "last_name": "",
-                "responsible_user_id": 504141,
-                "group_id": 0,
-                "created_by": 504141,
-                "updated_by": 504141,
-                "created_at": 1586359590,
-                "updated_at": 1586359590,
-                "closest_task_at": null,
-                "custom_fields_values": null,
-                "account_id": 28805383,
-                "_links": {
-                    "self": {
-                        "href": "https://example.amocrm.ru/api/v4/contacts/7767065"
-                    }
-                },
-                "_embedded": {
-                    "tags": [],
-                    "companies": []
-                }
-            }
-        ]
-    }
-}
-
-
-response._embedded.contacts.forEach(elem => {
-    if (elem._embedded.leads && elem._embedded.leads.length > 0) {
-		console.log(elem.name);
-	} else {
-		console.log('Бан');
-		// console.log(!!elem._embedded.leads);
-		// console.log(!!(elem._embedded.leads.length > 0));
-	}
-})
-// response._embedded.contacts.forEach(elem => console.log(elem));
-// alert('123')
-
-JS;
-
-$this->registerJs($js);
-
-?>
